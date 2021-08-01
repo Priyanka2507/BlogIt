@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=posts.title%></title>
+</head>
+<body>
+    <h1 class="m-5 mb-3 font-bold text-4xl"> <%=posts.title%> </h1>
+    <div class="ml-5 flex items-center text-sm text-gray-500">
+        <%=posts.date%>
+    </div>
+    <button class="ml-5 mt-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <h4 class="text-l"><a href='/'>Home</a></h4>
+    </button>
+    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <a href='/posts/edit/<%=posts.id%>'>Edit</a> 
+    </button>
+    <div>
+        <p class="m-5 font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "><%=posts.description%></p>
+    </div>
+    <div>
+        <p class="m-5"><%-posts.content%></p>
+    </div>
+</body>
+</html>

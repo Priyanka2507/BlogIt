@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Blog</title>
+</head>
+<body>
+
+    <h1 class="m-5 font-bold text-5xl"> Blog </h1>
+    <button class="ml-5 mt-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <h4 class="text-l"><a href="http://localhost:3000/posts/new"> Create New </a></h4>
+    </button>
+
+    <br>
+    <br>
+
+    <% posts.forEach(post => {%>
+        <div class="flex items-center justify-between m-10">
+            <div class="flex flex-col lg:flex-row w-full items-start lg:items-center rounded bg-white shadow">
+                <div class="w-full lg:w-2/3 h-64 dark:bg-gray-800">
+                    <div>
+                        <h2 class="mt-5 ml-5 font-bold text-3xl "><%=post.title%></h2>
+                        <div class="ml-5 flex items-center text-sm text-gray-500">
+                            <%=post.date%>
+                        </div>
+                        <p class="ml-5 mt-5 mb-5"><%=post.description%></p>
+                        <div class="mt-5 flex">
+                            <span class="hidden sm:block ml-5">
+                                <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <a href='/posts/<%=post.id%>'>+Read</a>
+                                </button>
+                            </span>
+                            <span class="hidden sm:block ml-3">
+                                <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <a href='/posts/edit/<%=post.id%>'> Edit </a>
+                                </button>
+                            </span>
+                            <span class="sm:ml-3">
+                                    <form action="/posts/<%=post.id%>?_method=DELETE" method="POST" >
+                                        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Delete
+                                        </button>
+                                    </form>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+
+    
+</body>
+</html>
