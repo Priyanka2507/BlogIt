@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Pusher = require("pusher");
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -23,6 +24,15 @@ mongoose
     })
     .then(console.log("Database Connected"))
     .catch((err) => console.log(err))
+
+
+
+var pusher = new Pusher({
+    appId: '1249640',
+    key: '6817c7d60780319b60d0',
+    secret: '35d5e79a144d02885e89',
+    cluster: 'ap2'
+});
 
 app.get("/", async (req, res) => {
     const posts = await post.find().sort({

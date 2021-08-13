@@ -19,10 +19,36 @@
         <a href='/posts/edit/<%=posts.id%>'>Edit</a> 
     </button>
     <div>
-        <p class="m-5 font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "><%=posts.description%></p>
+        <p class="m-5 font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+            <%=posts.description%>
+        </p>
     </div>
     <div>
         <p class="m-5"><%-posts.content%></p>
     </div>
+
+    <button type="button" class="ml-5 mt-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <a href='/posts/comment/<%=posts.id%>'>Add a Comment</a>
+    </button>
+
+    <br> 
+
+    <div class="container">
+    
+        <% comm.forEach(a => { %>
+            <div class="flex items-center justify-between m-10">
+                <div class="flex flex-col lg:flex-row w-full items-start lg:items-center rounded bg-white shadow">
+                    <div class="w-full dark:bg-gray-800">
+                        <h4 class="mt-5 ml-5  font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " ><%= a.username %></h4>
+                        <div class="ml-5"><%= a.date.toLocaleDateString() %></div>
+                        <div class="ml-5 mt-2 mb-3"><%= a.comment %></div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    
+
+    <!-- <script type="text/javascript" src="https://js.pusher.com/3.2/pusher.min.js"></script> -->
 </body>
 </html>

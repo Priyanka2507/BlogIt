@@ -1,9 +1,19 @@
 const express = require('express');
+const Pusher = require("pusher");
 const post = require('../models/post');
 const router = express.Router();
+const comment = require('../models/comment');
 
 router.get('/new', (req, res) => {
     res.render('new', { posts: new post() });
+})
+
+router.get('/comment/:id', async (req, res) => {
+    const newPost = await post.findById(req.params.id);
+    if (newPost == null) {
+        res.redirect('/');
+    }
+    res.render('comment', { comm: new comment(), posts: newPost });
 })
 
 router.get('/:id', async (req, res) => {
@@ -11,7 +21,12 @@ router.get('/:id', async (req, res) => {
     if (newPost == null) {
         res.redirect('/');
     }
-    res.render('show', { posts: newPost });
+    const comments = await comment.find({
+        blogId: req.params.id
+    }).sort({
+        date: 'desc'
+    })
+    res.render('show', { posts: newPost, comm: comments });
 })
 
 router.get('/edit/:id', async (req, res) => {
@@ -37,6 +52,23 @@ router.put('/:id', async (req, res) => {
         res.render('edit', { posts: editPost });
     }
 })
+
+
+router.post('/comment/:id', async (req, res) => {    
+    let newComm = new comment({
+        username: req.body.username,
+        comment: req.body.comment,
+        blogId: req.params.id
+    })
+    try {
+        newComm = await newComm.save();
+        res.redirect(`/posts/${newComm.blogId}`);
+    } catch (err) {
+        console.log(err);
+        res.render('/');
+    }
+})
+
 
 router.post('/', async (req, res) => {
     let newPost = new post({

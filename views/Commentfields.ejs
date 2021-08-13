@@ -1,0 +1,22 @@
+<div class="justify-between m-10">
+    <p class=" font-medium text-gray-1000 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ">
+        Leave a comment
+    </p>
+    <br>
+    <div>
+        <input required placeholder="Username" type="text" name="username" id="username" 
+        class=" block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+    </div>
+    <br>
+    <div>
+        <input required placeholder="Comment" name="comment" id="comment" 
+        class=" block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+    </div>
+    <br>
+    <button class="mr-3 mt-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <h4 class="text-l"><a href='/posts/<%= posts.id %>'>Cancel</a></h4>
+    </button>
+    <button type="submit" class="mr-3 mt-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <h4 class="text-l">Post</h4>
+    </button>
+</div>
